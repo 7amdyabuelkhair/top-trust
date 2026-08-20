@@ -34,6 +34,15 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Debug build output
+        run: |
+          echo "=== ROOT ==="
+          ls -la
+          echo "=== .output ==="
+          find .output -maxdepth 4 -type f 2>/dev/null | head -100
+          echo "=== DIST ==="
+          find dist -maxdepth 4 -type f 2>/dev/null | head -100
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
