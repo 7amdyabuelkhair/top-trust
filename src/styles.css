@@ -1,0 +1,296 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-graphite: var(--graphite);
+  --color-graphite-foreground: var(--graphite-foreground);
+  --color-ember: var(--ember);
+  --color-ember-foreground: var(--ember-foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --font-display: "Tajawal", "Inter", sans-serif;
+  --font-body: "IBM Plex Sans Arabic", "Inter", sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Top Trust — Light theme (logo palette) */
+  --background: #ffffff;
+  --foreground: #242628;
+  --surface: #f7f8f9;
+  --surface-2: #eff0f2;
+
+  --card: #ffffff;
+  --card-foreground: #242628;
+  --popover: #ffffff;
+  --popover-foreground: #242628;
+
+  --primary: #ef491f;
+  --primary-hover: #d93d18;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f7f8f9;
+  --secondary-foreground: #242628;
+
+  --muted: #f7f8f9;
+  --muted-foreground: #5a5b5d;
+
+  --accent: #242628;
+  --accent-foreground: #ffffff;
+
+  --graphite: #242628;
+  --graphite-foreground: #ffffff;
+  --ember: #ef491f;
+  --ember-foreground: #ffffff;
+
+  --destructive: #d93d18;
+  --destructive-foreground: #ffffff;
+
+  --border: #e3e5e7;
+  --input: #e3e5e7;
+  --ring: #ef491f;
+
+  --gradient-ember: linear-gradient(135deg, #ef491f, #d93d18);
+  --gradient-graphite: linear-gradient(160deg, #242628, #151719);
+  --shadow-ember: 0 16px 40px -20px rgb(239 73 31 / 0.45);
+  --shadow-deep: 0 24px 60px -32px rgb(36 38 40 / 0.28);
+  --shadow-card: 0 1px 2px rgb(36 38 40 / 0.05), 0 12px 28px -18px rgb(36 38 40 / 0.14);
+}
+
+.dark {
+  /* Top Trust — Dark theme (logo palette) */
+  --background: #151719;
+  --foreground: #ffffff;
+  --surface: #1e2023;
+  --surface-2: #24272a;
+
+  --card: #24272a;
+  --card-foreground: #ffffff;
+  --popover: #24272a;
+  --popover-foreground: #ffffff;
+
+  --primary: #f0522a;
+  --primary-hover: #ff6438;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1e2023;
+  --secondary-foreground: #ffffff;
+
+  --muted: #1e2023;
+  --muted-foreground: #b5b7ba;
+
+  --accent: #36393d;
+  --accent-foreground: #ffffff;
+
+  --graphite: #1e2023;
+  --graphite-foreground: #ffffff;
+  --ember: #f0522a;
+  --ember-foreground: #ffffff;
+
+  --destructive: #ff6438;
+  --destructive-foreground: #ffffff;
+
+  --border: #36393d;
+  --input: #36393d;
+  --ring: #f0522a;
+
+  --gradient-ember: linear-gradient(135deg, #f0522a, #ff6438);
+  --gradient-graphite: linear-gradient(160deg, #24272a, #151719);
+  --shadow-ember: 0 16px 40px -20px rgb(240 82 42 / 0.4);
+  --shadow-deep: 0 24px 60px -32px rgb(0 0 0 / 0.45);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.2), 0 12px 28px -18px rgb(0 0 0 / 0.35);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  a:hover,
+  button:hover {
+    transition-property: color, background-color, border-color, opacity, transform;
+    transition-duration: 150ms;
+  }
+}
+
+@utility text-gradient-ember {
+  background: var(--gradient-ember);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gradient-ember {
+  background-image: var(--gradient-ember);
+}
+
+@utility cta-brand {
+  background-image: var(--gradient-ember);
+  color: var(--primary-foreground);
+
+  &:hover {
+    background-image: none;
+    background-color: var(--primary-hover);
+  }
+}
+
+@utility bg-gradient-graphite {
+  background-image: var(--gradient-graphite);
+}
+
+@utility shadow-ember {
+  box-shadow: var(--shadow-ember);
+}
+
+@utility shadow-deep {
+  box-shadow: var(--shadow-deep);
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility grid-etch {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--border) 70%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--border) 70%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 64px 64px;
+}
+
+@utility rule-accent {
+  &::before {
+    content: "";
+    display: inline-block;
+    inline-size: 2.25rem;
+    block-size: 2px;
+    vertical-align: middle;
+    margin-inline-end: 0.75rem;
+    background-color: var(--primary);
+  }
+}
+
+/* ---- Scroll-entrance animations ---- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@utility animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility animate-fade-in {
+  animation: fade-in 0.8s ease-out both;
+}
+
+@utility animate-scale-in {
+  animation: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Reveal-on-scroll: hidden until intersect observed */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-scale-in {
+    animation: none;
+  }
+}
