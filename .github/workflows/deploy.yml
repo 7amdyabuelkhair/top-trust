@@ -25,20 +25,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build for GitHub Pages
         run: npm run build
+        env:
+          GITHUB_PAGES: "true"
 
-      - name: Check build
-        run: |
-          echo "=== BUILD OUTPUT ==="
-          find dist -maxdepth 3 -type f 2>/dev/null || true
-          find .output -maxdepth 3 -type f 2>/dev/null || true
+      - name: Add SPA fallback for GitHub Pages
+        run: cp dist/client/index.html dist/client/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -46,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: dist/client
 
       - name: Deploy
         uses: actions/deploy-pages@v4

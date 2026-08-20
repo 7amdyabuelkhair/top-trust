@@ -1,14 +1,16 @@
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
 /** Central image URLs — local assets served from /public */
 export const images = {
-  logo: "/logo.jpg",
-  logoFallback: "/logo.svg",
-  hero: "/hero.png",
-  facility: "/facility.jpg",
+  logo: withBase("/logo.jpg"),
+  logoFallback: withBase("/logo.svg"),
+  hero: withBase("/hero.png"),
+  facility: withBase("/facility.jpg"),
   products: {
-    "steel-pipes": "/product-pipes.jpg",
-    "aluminium-sheets": "/product-sheets.jpg",
-    "copper-rods": "/product-rods.jpg",
-    "structural-beams": "/product-beams.jpg",
+    "steel-pipes": withBase("/product-pipes.jpg"),
+    "aluminium-sheets": withBase("/product-sheets.jpg"),
+    "copper-rods": withBase("/product-rods.jpg"),
+    "structural-beams": withBase("/product-beams.jpg"),
   },
 } as const;
 
