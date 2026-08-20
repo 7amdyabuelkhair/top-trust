@@ -6,5 +6,8 @@ export default defineConfig({
   },
   vite: {
     base: "/top-trust/",
+    build: {
+      outDir: "dist",
+    },
   },
 });
